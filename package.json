@@ -1,0 +1,32 @@
+{
+  "name": "qaguru_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "allureGenerate": "allure generate",
+    "allureOpen": "allure open",
+    "uiMode": "npx playwright test --ui",
+    "test": "npx playwright test",
+    "debug": "npx playwright test --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olemoreflipflop/qaGuru_JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olemoreflipflop/qaGuru_JS/issues"
+  },
+  "homepage": "https://github.com/olemoreflipflop/qaGuru_JS#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.47.2",
+    "@types/node": "^22.7.4",
+    "prettier": "3.3.3",
+    "dotenv": "^16.4.5"
+  },
+  "dependencies": {}
+}
