@@ -1,11 +1,9 @@
-import {
-  HomePage,
-  SignUpPage,
-  LoginPage,
-  EditorPage,
-  ArticlePage,
-  ArticlesFeedPage,
-} from './index';
+import { HomePage } from './home.page';
+import { SignUpPage } from './signup.page';
+import { LoginPage } from './login.page';
+import { EditorPage } from './editor.page';
+import { ArticlePage } from './article.page';
+import { ArticlesFeedPage } from './articlesFeed.page';
 
 export class App {
   constructor(page) {

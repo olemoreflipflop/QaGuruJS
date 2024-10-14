@@ -1,13 +1,17 @@
 import { test, expect } from '@playwright/test';
-import { createUserData, createArticleData } from '../src/helpers/utils';
-import { App } from '../src/pages/app.page';
+import { UserBulder, ArticleBuilder } from '../src/helpers/builders/index';
+import { App } from '../src/pages/index';
 
 test.describe('Создание статьи/', async () => {
   let app;
 
   test.beforeEach('Создать user-a и залогиниться', async ({ page }) => {
     app = new App(page);
-    const userData = createUserData().getData();
+    const userData = new UserBulder()
+      .addUserName()
+      .addEmail()
+      .addPassword()
+      .generate();
 
     await app.homePage.open('/');
     await app.homePage.navigationBar.goToSignUp();
@@ -19,7 +23,12 @@ test.describe('Создание статьи/', async () => {
   });
 
   test('Пользователь может: Создать статью со всеми заполненными полями', async () => {
-    const article = createArticleData().getData();
+    const article = new ArticleBuilder()
+      .addTitle()
+      .addDescription()
+      .addTag()
+      .addBody()
+      .generate();
 
     await app.homePage.navigationBar.goToNewArticle();
     await app.editorPage.publishArticle(article);
@@ -37,8 +46,11 @@ test.describe('Создание статьи/', async () => {
   });
 
   test('Пользователь может: Создать статью только с обязательными полями', async () => {
-    const article = createArticleData().getData();
-    article.tag = '';
+    const article = new ArticleBuilder()
+      .addTitle()
+      .addDescription()
+      .addBody()
+      .generate();
 
     await app.homePage.navigationBar.goToNewArticle();
     await app.editorPage.publishArticle(article);
@@ -74,8 +86,17 @@ test.describe('Редактирование статьи/', async () => {
 
   test.beforeEach('Создать user-a и залогиниться', async ({ page }) => {
     app = new App(page);
-    const userData = createUserData().getData();
-    const article = createArticleData().getData();
+    const userData = new UserBulder()
+      .addUserName()
+      .addEmail()
+      .addPassword()
+      .generate();
+    const article = new ArticleBuilder()
+      .addTitle()
+      .addDescription()
+      .addTag()
+      .addBody()
+      .generate();
 
     await app.homePage.open('/');
     await app.homePage.navigationBar.goToSignUp();
@@ -91,7 +112,13 @@ test.describe('Редактирование статьи/', async () => {
 
   //bug
   test.fail('Пользователь может: отредактировать статью', async () => {
-    const updatedArticle = createArticleData().getData();
+    const updatedArticle = new ArticleBuilder()
+      .addTitle()
+      .addDescription()
+      .addTag()
+      .addBody()
+      .generate();
+
     await app.articlePage.openEditArticleForm();
     await app.editorPage.publishArticle(updatedArticle);
     await app.articlePage.editButton.waitFor();
@@ -116,8 +143,17 @@ test.describe('Удаление статьи/', async () => {
   let app;
   test.beforeEach('Создать user-a и залогиниться', async ({ page }) => {
     app = new App(page);
-    const userData = createUserData().getData();
-    const article = createArticleData().getData();
+    const userData = new UserBulder()
+      .addUserName()
+      .addEmail()
+      .addPassword()
+      .generate();
+    const article = new ArticleBuilder()
+      .addTitle()
+      .addDescription()
+      .addTag()
+      .addBody()
+      .generate();
 
     await app.homePage.open('/');
     await app.homePage.navigationBar.goToSignUp();

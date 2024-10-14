@@ -1,13 +1,17 @@
 import { test, expect } from '@playwright/test';
-import { createUserData } from '../src/helpers/utils';
-import { App } from '../src/pages/app.page';
+import { UserBulder } from '../src/helpers/builders/user.builder';
+import { App } from '../src/pages/index';
 
 test.describe('Логин/', async () => {
   let app, userData;
 
   test.beforeEach('Создать user-a', async ({ page }) => {
     app = new App(page);
-    userData = createUserData().getData();
+    userData = new UserBulder()
+      .addUserName()
+      .addEmail()
+      .addPassword()
+      .generate();
 
     await app.homePage.open('/');
     await app.homePage.navigationBar.goToSignUp();
