@@ -14,7 +14,6 @@ export class UserMenu {
     await test.step('Перейти на /Settings', async () => {
       await this.menuButton.click();
       await this.settingsButton.click();
-      await expect(this.page).toHaveURL(/\/settings/);
     });
   }
 

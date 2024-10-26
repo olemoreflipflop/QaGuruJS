@@ -11,11 +11,9 @@ export class LoginPage extends BasePage {
   }
 
   async loginAs(userEmail = '', userPassword = '') {
-    await test.step('Ввести email-a и пароля', async () => {
+    await test.step('Ввести email и пароль, подтвердить логин', async () => {
       await this.passwordField.fill(userPassword);
       await this.emailField.fill(userEmail);
-    });
-    await test.step('Подтвердить форму логина', async () => {
       await this.loginButton.click();
     });
   }

@@ -19,28 +19,24 @@ export class NavigationBar {
     await test.step('Перейти на /Sign up', async () => {
       await this.signupButton.click();
       await this.page.waitFor;
-      //await expect(this.page).toHaveURL(/\/register/);
     });
   }
 
   async goToLogin() {
     await test.step('Перейти на /Login', async () => {
       await this.loginButton.click();
-      //await expect(this.page).toHaveURL(/\/login/);
     });
   }
 
   async goToHome() {
     await test.step('Перейти на /Home', async () => {
       await this.homeButton.click();
-      //await expect(this.page).toHaveURL(/\/#\//);
     });
   }
 
   async goToNewArticle() {
     await test.step('Перейти на /New Article', async () => {
       await this.newArticleButton.click();
-      //await expect(this.page).toHaveURL(/\/editor/);
     });
   }
 }
